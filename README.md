@@ -1,2 +1,2 @@
 # polyFit
-Calibration Gains Polynomial Fitting
+Module to fit polynomial to radio interferimetric calibration solutions (antenna gains)
