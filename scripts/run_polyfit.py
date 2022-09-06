@@ -22,4 +22,4 @@ for order in orders:
 ind = errors.index(min(errors))
 print ('Choosing polynomial order {} with MSE {}'.format(orders[ind], errors[ind]))
 m.fit_data(orders[ind])
-m.write_to(args.outfile)
+m.write_to(args.outfile, ORDER=orders[ind], MSE=errors[ind])
