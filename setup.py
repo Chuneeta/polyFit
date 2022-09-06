@@ -36,6 +36,7 @@ setup_args = {
 	'install_requires': ['numpy>=1.16.5','matplotlib>=2.2', 'pytest'],
 	'include_package_data': True,
 	'zip_safe':     False,
+	'scripts': ['scripts/run_polyfit.py']
 }
 
 if __name__ == '__main__':
