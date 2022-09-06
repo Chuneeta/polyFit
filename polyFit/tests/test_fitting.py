@@ -44,6 +44,20 @@ class TestFit(unittest.TestCase):
 		self.assertEqual(f.poly_array.dtype, 'complex128')
 		np.testing.assert_almost_equal(np.real(f.poly_array[0, 0, 10, :]), 
 		np.array([0.01208641, 0.01098337, 0.01217154, 0.28863853]))
+		inds = np.where(~np.isnan(f.gain_array[0, 0, :, 0]))[0]
+		poly = f._polynomial_fit(np.arange(f.Nfreq)[inds], f.gain_array[0, 0, inds, 0], 3, weights=None)
+		self.assertEqual(f.poly_params.data[0][0], 0)
+		self.assertEqual(f.poly_params.data[0][1], 0)
+		self.assertEqual(f.poly_params.data[0][2], 'XX')
+		self.assertEqual(f.poly_params.data[0][3], 'REAL')
+		np.testing.assert_almost_equal(f.poly_params.data[0][4], poly[0].coef[0])
+		np.testing.assert_almost_equal(f.poly_params.data[0][5], poly[0].coef[1])
+		np.testing.assert_almost_equal(f.poly_params.data[0][6], poly[0].coef[2])
+		np.testing.assert_almost_equal(f.poly_params.data[0][7], poly[0].coef[3])
+		np.testing.assert_almost_equal(f.poly_params.data[1][4], poly[1].coef[0])
+		np.testing.assert_almost_equal(f.poly_params.data[1][5], poly[1].coef[1])
+		np.testing.assert_almost_equal(f.poly_params.data[1][6], poly[1].coef[2])
+		np.testing.assert_almost_equal(f.poly_params.data[1][7], poly[1].coef[3])
 		
 	def test_mean_square_error(self):
 		f = Fit(calfile)
