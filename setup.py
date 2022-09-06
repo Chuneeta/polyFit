@@ -21,7 +21,7 @@ def package_files(package_dir, subdirectory):
 	return paths
 
 
-data_files = package_files('PolyFit', 'data')
+data_files = package_files('polyFit', 'data')
 
 setup_args = {
 	'name':         'polyFit',
@@ -30,9 +30,9 @@ setup_args = {
 	'license':      'BSD',
 	'version':      version.version,
 	'description':  'MWA Calibration Polynomial Fitting',
-	'packages':     ['PolyFit'],
-	'package_dir':  {'PolyFit': 'PolyFit'},
-	'package_data': {'PolyFit': data_files},
+	'packages':     ['polyFit'],
+	'package_dir':  {'polyFit': 'polyFit'},
+	'package_data': {'polyFit': data_files},
 	'install_requires': ['numpy>=1.16.5','matplotlib>=2.2', 'pytest'],
 	'include_package_data': True,
 	'zip_safe':     False,
